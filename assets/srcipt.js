@@ -4,7 +4,7 @@ var searchHistoryList = [];
 
 // function for current condition
 function currentCondition(city) {
-
+    
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=d1f9beed9f54e1ceb0195af74b70fd9e`;
 
     $.ajax({
@@ -36,8 +36,9 @@ function currentCondition(city) {
 // function for future condition
 function futureCondition(lat, lon) {
 
-    // THEN I am presented with a 5-day forecast
-    var futureURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=d1f9beed9f54e1ceb0195af74b70fd9e`;
+    var lat = futureResponse.coord.lat;
+    var lon = futureResponse.coord.lon;
+    var futureURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&cnt=5&appid=d1f9beed9f54e1ceb0195af74b70fd9e`;
 
     $.ajax({
         url: futureURL,
